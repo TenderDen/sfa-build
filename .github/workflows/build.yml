@@ -31,10 +31,6 @@ jobs:
         with:
           go-version: ${{ steps.version.outputs.go_version }}
 
-      - name: Setup GoMobile
-        run: |
-          go install golang.org/x/mobile/cmd/gomobile@latest
-
       - name: Set up JDK 1.8
         uses: actions/setup-java@v3
         with:
@@ -60,8 +56,8 @@ jobs:
       - name: Build Libbox
         run: |
           cd hiddify-sing-box
-          gomobile bind -v -androidapi 21 -javapkg=io.nekohasekai -o libbox -tags "$TAGS" ./experimental/libbox
-          ls
+          make lib_install
+          make lib_android
           if [ -f "libbox.aar" ]; then mv libbox.aar ../sing-box-for-android/app/libs/; fi
 
       - name: Build APK

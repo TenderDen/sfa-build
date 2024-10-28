@@ -21,6 +21,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install required packages
+        run: |
+          apt-get update
+          apt-get install -y gcc libc-dev make sdkmanager
+
       - name: Get latest go version
         id: version
         run: |
@@ -37,9 +42,6 @@ jobs:
           distribution: oracle
           java-version: 20
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-
       - name: Git Clone SFA
         run: |
           git clone https://github.com/SagerNet/sing-box-for-android
@@ -52,6 +54,12 @@ jobs:
         run: |
           git clone https://github.com/TenderDen/hiddify-sing-box
           cd hiddify-sing-box
+
+      - name: Setup Android NDK
+        run: |
+          cd sing-box-for-android/app
+          sdkmanager 'platforms;android-34' 'build-tools;34.0.0' "ndk;$(sed -n -E 's/ *ndkVersion "([0-9.]+)"/\1/p' build.gradle)"
+          sed -i -e 's/enable true/enable false/' build.gradle
 
       - name: Build Libbox
         run: |

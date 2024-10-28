@@ -59,7 +59,7 @@ jobs:
 
       - name: Build Libbox
         run: |
-          cd sing-box-pub
+          cd hiddify-sing-box
           gomobile bind -v -androidapi 21 -javapkg=io.nekohasekai -libname=box -tags "$TAGS" -ldflags "-X github.com/sagernet/sing-box/constant.Version=v1.3-yaott -buildid=" ./experimental/libbox
           if [ -f "libbox.aar" ]; then mv libbox.aar ../sing-box-for-android/app/libs/; fi
 

@@ -50,7 +50,7 @@ jobs:
 
       - name: Git Clone sing-box
         run: |
-          git clone https://github.com/hiddify/hiddify-sing-box
+          git clone https://github.com/TenderDen/hiddify-sing-box
           cd hiddify-sing-box
 
       - name: Build Libbox

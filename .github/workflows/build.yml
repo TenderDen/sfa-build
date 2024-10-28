@@ -46,7 +46,10 @@ jobs:
 
       - name: Git Clone SFA
         run: |
-          git clone https://github.com/SagerNet/sing-box-for-android -b v1.9.4
+          git clone https://github.com/SagerNet/sing-box-for-android
+          cd sing-box-for-android
+          git checkout 019a69829b5e585144a32fdfe441962aa7d254fa
+          cd ..
           mkdir -p sing-box-for-android/app/libs
 
       - name: Git Clone sing-box

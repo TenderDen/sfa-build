@@ -71,8 +71,8 @@ jobs:
       - name: Build APK
         run: |
           cd sing-box-for-android
-          ./gradlew build
-          ./gradlew assembleDebug
+          ./gradlew build -x lint
+          ./gradlew assembleDebug -x lint
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3

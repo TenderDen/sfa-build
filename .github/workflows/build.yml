@@ -46,7 +46,7 @@ jobs:
         run: |
           git clone https://github.com/SagerNet/sing-box-for-android
           cd sing-box-for-android
-          git checkout 0b18d9f14cba3029bb28d826ac4aac92b7a7e195
+          git checkout c6f71f5e47e5f2849824c0d1f01f2cadd408a938
 
       - name: Git Clone sing-box
         run: |

@@ -47,13 +47,10 @@ jobs:
           git clone https://github.com/SagerNet/sing-box-for-android
           cd sing-box-for-android
           git checkout 019a69829b5e585144a32fdfe441962aa7d254fa
-          cd ..
-          mkdir -p sing-box-for-android/app/libs
 
       - name: Git Clone sing-box
         run: |
           git clone https://github.com/TenderDen/hiddify-sing-box
-          cd hiddify-sing-box
 
       - name: Setup Android NDK
         run: |
@@ -61,11 +58,11 @@ jobs:
           sdkmanager 'platforms;android-34' 'build-tools;34.0.0' "ndk;$(sed -n -E 's/ *ndkVersion "([0-9.]+)"/\1/p' build.gradle)"
           sed -i -e 's/enable true/enable false/' build.gradle
 
-      - name: Build Libbox
+      - name: Build libbox
         run: |
+          mkdir -p sing-box-for-android/app/libs
           cd hiddify-sing-box
-          make lib_install
-          make lib_android
+          make lib_install && make lib_android
           if [ -f "libbox.aar" ]; then mv libbox.aar ../sing-box-for-android/app/libs/; fi
 
       - name: Build APK
@@ -77,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: sing-box
-          path: sing-box-for-android/app/build/outputs/apk
+          path: sing-box-for-android/app/build/outputs/apk/other/debug
           

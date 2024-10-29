@@ -71,15 +71,12 @@ jobs:
       - name: Build APK
         run: |
           cd sing-box-for-android
-          ./gradlew
-
-      - name: Get debug file apk path
-        id: debugApk
-        run: echo "apkfile=$(find app/build/outputs/apk/debug/*.apk)" >> $GITHUB_OUTPUT
+          ./gradlew build
+          ./gradlew assembleDebug
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: sing-box
-          path: sing-box-for-android/app/build/outputs/apk/debug/app-debug.apk
+          path: ~/sing-box-for-android/app/build/outputs/apk/debug/app-debug.apk
           

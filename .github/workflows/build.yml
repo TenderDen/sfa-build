@@ -61,7 +61,7 @@ jobs:
       - name: Build libbox
         run: |
           mkdir -p sing-box-for-android/app/libs
-          cd sing-box-plus
+          cd hiddify-sing-box
           make lib_install && make lib_android
           if [ -f "libbox.aar" ]; then mv libbox.aar ../sing-box-for-android/app/libs/; fi
 

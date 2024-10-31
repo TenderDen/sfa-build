@@ -46,11 +46,11 @@ jobs:
         run: |
           git clone https://github.com/SagerNet/sing-box-for-android
           cd sing-box-for-android
-          git checkout c6f71f5e47e5f2849824c0d1f01f2cadd408a938
+          git checkout 019a69829b5e585144a32fdfe441962aa7d254fa
 
       - name: Git Clone sing-box
         run: |
-          git clone https://github.com/TenderDen/sing-box-plus
+          git clone https://github.com/TenderDen/hiddify-sing-box
 
       - name: Setup Android NDK
         run: |
